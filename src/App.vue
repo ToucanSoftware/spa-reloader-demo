@@ -1,56 +1,53 @@
 <template>
-  <div id="app">
-    <div id="nav">
-
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-main>
+      <home-page />
+      <custom-dialog v-bind:dialog="showDialog">
+        <template v-slot:dialog-text>
+          {{ dialogText }}
+        </template>
+      </custom-dialog>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
+import HomePage from "./components/HomePage";
+import CustomDialog from "./components/CustomDialog";
+
 export default {
-  mounted(){
-    this.$spaSubscribe(this.callbackFunction);
+  name: "App",
+  data: function() {
+    return {
+      dialogText: "",
+      showDialog: false
+    };
   },
 
-  methods:{
+  components: {
+    CustomDialog,
+    HomePage
+  },
+
+  mounted() {
+    this.$spaSubscribe(this.callbackFunction);
+  },
+  methods: {
     callbackFunction: function(current, old) {
+      this.showDialog = true;
       if (
         old !== undefined &&
         old !== null &&
         current !== undefined &&
         current !== null
       ) {
-        console.log("Changed image from: ", old.image, " to: ", current.image);
+        this.dialogText = `Image changed from: ${old.image}, to: ${current.image}`;
       } else if (current !== undefined && current !== null) {
-        console.log("Changed image to: ", current.image);
+        this.dialogText = `Image changed to: ${current.image}`;
       } else {
-        console.log("Changed detected");
+        this.dialogText = "Image change detected.";
       }
     }
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>

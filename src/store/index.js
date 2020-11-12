@@ -10,14 +10,14 @@ export default new Vuex.Store({
       namespace: "",
       name: "",
       image: "",
-      sha256: "",
-    },
+      sha256: ""
+    }
   },
   mutations: {
     SPA_EVENT(state, event) {
       state.event = event;
-    },
+    }
   },
   actions: {},
-  modules: {},
+  modules: {}
 });

@@ -10,7 +10,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialog = false">
+          <v-btn color="green darken-1" text @click="onRefresh">
             Refresh
           </v-btn>
         </v-card-actions>
@@ -22,7 +22,15 @@
 <script>
 export default {
   name: "CustomDialog",
-  props: { dialog: Boolean }
+  props: { dialog: Boolean },
+  methods: {
+    onRefresh() {
+      // close dialog
+      this.dialog = false;
+      // refresh browser
+      window.location.reload(false);
+    }
+  }
 };
 </script>
 

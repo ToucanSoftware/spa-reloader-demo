@@ -41,9 +41,9 @@ export default {
         current !== undefined &&
         current !== null
       ) {
-        this.dialogText = `Image changed from: ${old.image}, to: ${current.image}`;
+        this.dialogText = `Image changed from: ${old.previous_image.name}, to: ${current.current_image.name}`;
       } else if (current !== undefined && current !== null) {
-        this.dialogText = `Image changed to: ${current.image}`;
+        this.dialogText = `Image changed to: ${current.current_image.name}`;
       } else {
         this.dialogText = "Image change detected.";
       }

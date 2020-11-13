@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" persistent max-width="290">
       <v-card>
         <v-card-title class="headline">
-          Updated Image
+          Updated Image v1
         </v-card-title>
         <v-card-text>
           <slot name="dialog-text" />

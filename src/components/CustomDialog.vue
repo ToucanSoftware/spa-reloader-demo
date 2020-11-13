@@ -28,7 +28,7 @@ export default {
       // close dialog
       this.dialog = false;
       // refresh browser
-      window.location.reload(false);
+      window.location.reload(true);
     }
   }
 };

@@ -23,7 +23,7 @@ spec:
       containers:
       - name: spa-reloader
         imagePullPolicy: IfNotPresent
-        image: docker.io/toucansoftware/spa-reloader:0.0.8
+        image: docker.io/toucansoftware/spa-reloader:latest
         ports:
         - name: http
           containerPort: 8080

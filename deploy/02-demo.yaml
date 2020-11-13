@@ -17,6 +17,7 @@ spec:
     spec:
       containers:
       - name: spa-demo
+        imagePullPolicy: IfNotPresent
         image: docker.io/toucansoftware/spa-reloader-demo:0.0.1
         ports:
           - name: http

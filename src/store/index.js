@@ -9,8 +9,14 @@ export default new Vuex.Store({
       created_at: null,
       namespace: "",
       name: "",
-      image: "",
-      sha256: ""
+      current_image: {
+        sha256: "",
+        name: ""
+      },
+      previous_image: {
+        sha256: "",
+        name: ""
+      }
     }
   },
   mutations: {

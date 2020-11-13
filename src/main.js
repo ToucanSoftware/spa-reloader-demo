@@ -7,12 +7,12 @@ import vuetify from "./plugins/vuetify";
 
 Vue.config.productionTip = false;
 Vue.use(spaReloader, {
-  spaReloaderURL: "ws://192.168.1.143:8081"
+  spaReloaderURL: "ws:///ws",
 });
 
 new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

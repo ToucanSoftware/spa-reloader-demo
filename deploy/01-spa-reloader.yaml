@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: spa-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spa-reloader
+  namespace: spa-demo
+  labels:
+    app: spa-reloader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spa-reloader
+  template:
+    metadata:
+      labels:
+        app: spa-reloader
+    spec:
+      containers:
+      - name: spa-reloader
+        image: docker.io/toucansoftware/spa-reloader:latest
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        env:
+        - name: SPA_NAMESPACE
+          value: "spa-demo"
+        - name: SPA_NAME
+          value: "spa-demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spa-reloader
+  namespace: spa-demo
+  labels:
+    app: spa-reloader
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: spa-reloader

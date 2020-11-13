@@ -7,7 +7,7 @@ import vuetify from "./plugins/vuetify";
 
 Vue.config.productionTip = false;
 Vue.use(spaReloader, {
-  spaReloaderURL: "ws:///ws",
+  spaReloaderURL: "ws://" + location.hostname + "/ws",
 });
 
 new Vue({

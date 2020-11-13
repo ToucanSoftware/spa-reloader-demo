@@ -33,17 +33,10 @@ export default {
     this.$spaSubscribe(this.callbackFunction);
   },
   methods: {
-    callbackFunction: function(current, old) {
+    callbackFunction: function(image) {
       this.showDialog = true;
-      if (
-        old !== undefined &&
-        old !== null &&
-        current !== undefined &&
-        current !== null
-      ) {
-        this.dialogText = `Image changed from: ${old.previous_image.name}, to: ${current.current_image.name}`;
-      } else if (current !== undefined && current !== null) {
-        this.dialogText = `Image changed to: ${current.current_image.name}`;
+      if (image !== undefined && image !== null) {
+        this.dialogText = `Image changed from: ${image.previous_image.name}, to: ${image.current_image.name}`;
       } else {
         this.dialogText = "Image change detected.";
       }

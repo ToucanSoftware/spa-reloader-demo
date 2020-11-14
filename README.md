@@ -2,6 +2,51 @@
 
 This is a demo application that uses [SPA Reloader](https://github.com/ToucanSoftware/spa-reloader) and [SPA Reloader Vue Plugin](https://github.com/ToucanSoftware/spa-reloader-vue).
 
+## Use SPA Reloader Plugin in you Vue Application
+
+```console
+npm i spa-reloader-vue
+```
+
+```javascript
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import spaReloader from "spa-reloader-vue";
+import vuetify from "./plugins/vuetify";
+
+Vue.config.productionTip = false;
+Vue.use(spaReloader, {
+  spaReloaderURL: "ws://" + location.hostname + "/ws",
+});
+
+new Vue({
+  router,
+  store,
+  vuetify,
+  render: (h) => h(App),
+}).$mount("#app");
+```
+
+```javascript
+...
+  mounted() {
+    this.$spaSubscribe(this.callbackFunction);
+  },
+  methods: {
+    callbackFunction: function(image) {
+      this.showDialog = true;
+      if (image !== undefined && image !== null) {
+        this.dialogText = `Image changed from: ${image.previous_image.name}, to: ${image.current_image.name}`;
+      } else {
+        this.dialogText = "Image change detected.";
+      }
+    }
+  }
+...
+```
+
 ## Build demo docker images
 
 ### Buil v1 image

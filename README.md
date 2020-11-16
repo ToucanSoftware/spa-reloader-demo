@@ -58,6 +58,7 @@ docker build -t docker.io/toucansoftware/spa-reloader-demo:v1 .
 ### Buil v2 image
 
 ```console
+git checkout v2
 docker build -t docker.io/toucansoftware/spa-reloader-demo:v2 .
 ```
 

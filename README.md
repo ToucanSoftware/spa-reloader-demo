@@ -91,7 +91,7 @@ kubectl apply -f https://raw.githubusercontent.com/ToucanSoftware/spa-reloader-d
 ## Update demo image
 
 ```console
-kubectl set image deployment/spa-demo spa-demo=docker.io/toucansoftware/spa-reloader-demo:0.0.2 -n spa-demo
+kubectl set image deployment/spa-demo spa-demo=docker.io/toucansoftware/spa-reloader-demo:v2 -n spa-demo
 ```
 
 ## Clean up

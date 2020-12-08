@@ -21,18 +21,18 @@ spec:
         app: spa-reloader
     spec:
       containers:
-      - name: spa-reloader
-        imagePullPolicy: IfNotPresent
-        image: docker.io/toucansoftware/spa-reloader:latest
-        ports:
-        - name: http
-          containerPort: 8080
-          protocol: TCP
-        env:
-        - name: SPA_NAMESPACE
-          value: "spa-demo"
-        - name: SPA_NAME
-          value: "spa-demo"
+        - name: spa-reloader
+          imagePullPolicy: IfNotPresent
+          image: docker.io/toucansoftware/spa-reloader:latest
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SPA_NAMESPACE
+              value: "spa-demo"
+            - name: SPA_NAME
+              value: "spa-demo"
 ---
 apiVersion: v1
 kind: Service

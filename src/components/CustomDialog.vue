@@ -19,19 +19,17 @@
   </v-row>
 </template>
 
-<script>
-export default {
-  name: "CustomDialog",
-  props: { dialog: Boolean },
-  methods: {
-    onRefresh() {
-      // close dialog
-      this.dialog = false;
-      // refresh browser
-      window.location.reload(true);
-    }
-  }
-};
-</script>
+<script lang="ts">
+import { Component, Vue, Prop } from "vue-property-decorator";
+@Component
+export default class CustomDialog extends Vue {
+  @Prop({ default: false }) dialog!: boolean;
 
-<style scoped></style>
+  onRefresh() {
+    // close dialog
+    this.dialog = false;
+    // refresh browser
+    window.location.reload(true);
+  }
+}
+</script>

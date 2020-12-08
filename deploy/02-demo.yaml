@@ -16,13 +16,13 @@ spec:
         app: spa-demo
     spec:
       containers:
-      - name: spa-demo
-        imagePullPolicy: IfNotPresent
-        image: docker.io/toucansoftware/spa-reloader-demo:v1
-        ports:
-          - name: http
-            containerPort: 80
-            protocol: TCP
+        - name: spa-demo
+          imagePullPolicy: IfNotPresent
+          image: docker.io/toucansoftware/spa-reloader-demo:v1
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service
@@ -55,19 +55,19 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
 spec:
   rules:
-  -  http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: spa-demo
-            port:
-              number: 80
-      - path: /ws
-        pathType: Prefix
-        backend:
-          service:
-            name: spa-reloader
-            port:
-              number: 8080
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spa-demo
+                port:
+                  number: 80
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service:
+                name: spa-reloader
+                port:
+                  number: 8080
